@@ -6,8 +6,7 @@
 3. Tangled Web Application Guide
 4. Http the definite guide
 5. CORS in action
-6. Browser Security
-  - https://github.com/cure53/browser-sec-whitepaper
+6. [Browser Security](https://github.com/cure53/browser-sec-whitepaper)
 7. API Security in Action
 
 ## Certs / Online Materials
