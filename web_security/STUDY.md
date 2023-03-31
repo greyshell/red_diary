@@ -15,9 +15,11 @@
   - WAPTx
   - practical-web-defense 
   - [Web-PTX Lab](https://members.elearnsecurity.com/labs/hera_web_application_penetration_testing_extreme_v1) 
+
 2. Offensive Security: Courses & Certifications 
   - WEB-200
   - WEB-300
+
 3. Notsosecure
   - Basic Web Hacking: Basic Web Hacking 
   - Advanced web hacking: Advanced Web Hacking 
