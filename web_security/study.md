@@ -9,7 +9,7 @@
 6. [Browser Security](https://github.com/cure53/browser-sec-whitepaper)
 7. API Security in Action
 
-## Certs / Online Materials
+## Certs / Other Resources
 1. INE
   - WAPT
   - WAPTx
@@ -45,5 +45,5 @@
 13. Introduction XSS-Leak Wiki
   - <https://xsleaks.dev/>
 
-## Web CTF walkthroughs
+## Web-CTF walkthroughs
   - <https://ctftime.org/task/17592>
