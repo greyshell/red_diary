@@ -10,7 +10,6 @@
   - https://github.com/cure53/browser-sec-whitepaper
 7. API Security in Action
 
-
 ## Certs / Online Materials
 1. INE
   - WAPT
@@ -47,7 +46,6 @@
   - https://www.educative.io/courses/web-security-access-management-jwt-oauth2-openid-connect
 13. Introduction XSS-Leak Wiki
   - https://xsleaks.dev/
-  
 
 ## Web CTF walkthroughs
   - https://ctftime.org/task/17592
