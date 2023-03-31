@@ -45,7 +45,7 @@
   - https://www.educative.io/courses/web-application-security-everyday-software-engineer
   - https://www.educative.io/courses/web-application-security-http-headers
   - https://www.educative.io/courses/web-security-access-management-jwt-oauth2-openid-connect
-13. Introduction  XSS-Leak Wiki
+13. Introduction XSS-Leak Wiki
   - https://xsleaks.dev/
   
 
