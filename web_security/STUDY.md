@@ -1,25 +1,23 @@
 # Study Materials
 
 ## Books
-* Web Application Hackers Handbook
-* Browser Hackers Handbook
-* Tangled Web Application Guide
-* Http the definite guide
-* CORS in action
-* [Browser Security](https://github.com/cure53/browser-sec-whitepaper)
-* API Security in Action
+1. Web Application Hackers Handbook
+2. Browser Hackers Handbook
+3. Tangled Web Application Guide
+4. Http the definite guide
+5. CORS in action
+6. [Browser Security](https://github.com/cure53/browser-sec-whitepaper)
+7. API Security in Action
 
 ## Certs / Online Materials
-* INE
+1. INE
   - WAPT
   - WAPTx
   - practical-web-defense 
   - [Web-PTX Lab](https://members.elearnsecurity.com/labs/hera_web_application_penetration_testing_extreme_v1) 
-
-* Offensive Security: Courses & Certifications 
+2. Offensive Security: Courses & Certifications 
   - WEB-200
   - WEB-300
-
 3. Notsosecure
   - Basic Web Hacking: Basic Web Hacking 
   - Advanced web hacking: Advanced Web Hacking 
