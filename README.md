@@ -1,2 +1,2 @@
-# red_diary
+# Red Diary
 An Offensive Playbook
