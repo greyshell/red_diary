@@ -1,2 +1,2 @@
 # Red Diary
-An Offensive Playbook
+My learning notes
