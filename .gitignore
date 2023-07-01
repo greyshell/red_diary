@@ -1,1 +1,7 @@
 .DS_Store
+# locked folders
+code_review
+container_security
+interview
+system_setup
+web_security
