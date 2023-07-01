@@ -1,5 +1,6 @@
 # Hash Functions
 
+## Keynotes
 1. In general, `checksum` term is used for `non-crypto` hash functions.
 2. Feature `file download and hash match `
     1. In order to provide `integrity` and `authenticity` both it relays on the trusted mechanism(i.e https, uncompromisable hosting site) that provides the digest. 
@@ -24,7 +25,7 @@
 openssl dgst -sha256 downloaded_file
 ```
 
-### Properties
+## Hash function properties
 1. `Pre-image resistance` 
     1. No one should be able to `reverse` the hash function in order to `recover` the `input` from the output. 
     2. Knowing only the hash, I can't `recover` the input.
@@ -41,20 +42,17 @@ openssl dgst -sha256 downloaded_file
     3. Regarding onion address, they don't need to satisfy this property so they truncate the hash output. Therefore, always verify the context to check which hash properties are required.
       
 
-## Known Hash Functions
-
-### MD5
-
+## MD5
 1. Collision resistance property has been already broken and attacked.
 2. However, its pre-image resistance and 2nd pre-image resistance property does not impacted by any attack. Therefore, technically still it is safe to use in the context when we don’t need its collision resistance property.
     - [ ] TODO: need to verify all attacks
 3. FIPS and other compliances does not approve this.
 
-### SHA1
+## SHA1
 
-### SHA2
+## SHA2
 
-### SHA3
+## SHA3
 
 
 ## Reading Reference
