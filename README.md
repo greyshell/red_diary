@@ -5,4 +5,3 @@ My personal research and development notes.
 - Gitbook: https://red-diary.gitbook.io/greyshell/
 - Blog: https://greyshell.github.io/
 
-ABHIJIT SINHA
