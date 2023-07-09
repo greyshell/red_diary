@@ -19,6 +19,7 @@ Sample code
 
 {% code title="" overflow="wrap" lineNumbers="true" %}
 ```python
+print("hello")
 ```
 {% endcode %}
 
