@@ -14,12 +14,14 @@
     2. Second Pre-image resistance: 128 bit
     3. Collision resistance: 256 bit
 8. Hash functions `rarely use alone` in practical scenarios.
-9. Commitment scheme: hinding with binding
+9. Commitment scheme: hiding with binding
     1. Hiding -> Pre-image resistance
     2. Binding -> Second pre-image resistance
 10. Sometimes organization creates base32 representation of hash contains the same name of the website. This type of website address is called `onion` /  `vanity ` address. 
     1. They generates lots of public keys until one ended up hashing to a cool base32 representation.
-    2. They can also truncate the hash to achieve cool base32 representation because this hash does not need to meet collision resistance property. 
+    2. They can also truncate the hash to achieve cool base32 representation because this hash does not need to meet collision resistance property.
+11. The strong reason from dev not to upgrade the hash function is the backword compatibility 
+12. 
 11. Verify the digest of a downloaded file
 ```bash
 openssl dgst -sha256 downloaded_file
@@ -46,7 +48,7 @@ openssl dgst -sha256 downloaded_file
 1. Collision resistance property has been already broken and attacked.
 2. However, its pre-image resistance and 2nd pre-image resistance property does not impacted by any attack. Therefore, technically still it is safe to use in the context when we don’t need its collision resistance property.
     - [ ] TODO: need to verify all attacks
-3. FIPS and other compliances does not approve this.
+3. Not approved in FIPS and other compliances
 
 ## SHA1
 
