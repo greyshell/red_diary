@@ -9,7 +9,7 @@
 
 ## Github code
 
-{% @github-files/github-code-block url="https://github.com/greyshell/python_programming/blob/master/crypto/hashing.py" fullWidth="false" %}
+{% @github-files/github-code-block url="https://github.com/greyshell/silhouette/blob/main/install_ansiable.sh" fullWidth="false" %}
 
 ## Sample Image
 
