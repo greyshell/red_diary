@@ -52,7 +52,7 @@ thsi si sha2 con
 
 ## Github code
 
-\{% @github-files/github-code-block url="https://github.com/greyshell/python\_programming/blob/master/crypto/hashing.py" fullWidth="false" %\}
+{% @github-files/github-code-block url="https://github.com/greyshell/python\_programming/blob/master/crypto/hashing.py" %}
 
 {% @github-files/github-code-block url="https://github.com/greyshell/silhouette/blob/main/install_ansiable.sh" %}
 
