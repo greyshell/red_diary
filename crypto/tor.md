@@ -2,7 +2,7 @@
 description: Learning References
 ---
 
-# 🪲 Crypto
+# Crypto
 
 1. https://cryptobook.nakov.com/
 2. Crypto 101 by lvh => https://www.youtube.com/watch?v=3rmCGsCYJF8
@@ -25,15 +25,9 @@ print("hello")
 
 > quote block context
 
-
-
-
-
 {% tabs %}
 {% tab title="MD5" %}
 This is md5 context
-
-
 {% endtab %}
 
 {% tab title="SHA1" %}
@@ -44,12 +38,12 @@ This is md5 context
 {% tab title="SHA2" %}
 thsi si sha2 con
 
-* overal the&#x20;
-* idea&#x20;
+* overal the
+* idea
 {% endtab %}
 {% endtabs %}
 
-## Sample Table&#x20;
+## Sample Table
 
 | SL     | command               | comment                                                     |
 | ------ | --------------------- | ----------------------------------------------------------- |
@@ -58,30 +52,29 @@ thsi si sha2 con
 
 ## Github code
 
-{% @github-files/github-code-block url="https://github.com/greyshell/python_programming/blob/master/crypto/hashing.py" fullWidth="false" %}
+\{% @github-files/github-code-block url="https://github.com/greyshell/python\_programming/blob/master/crypto/hashing.py" fullWidth="false" %\}
+
+{% @github-files/github-code-block url="https://github.com/greyshell/silhouette/blob/main/install_ansiable.sh" %}
 
 ## Sample Image
 
 <figure><img src="https://raw.githubusercontent.com/greyshell/libO2/main/.assets/libO2_ci.png" alt="Image sample"><figcaption></figcaption></figure>
 
-
-
 ## Exildraw Link
 
-<img src=".gitbook/assets/file.excalidraw.svg" alt="" class="gitbook-drawing">
+![](.gitbook/assets/file.excalidraw.svg)
 
 ## Sample Task
 
 * [ ] thsi list
 * [ ] list2
 
-## Sample Hints / Warning&#x20;
+## Sample Hints / Warning
 
 {% hint style="info" %}
 This is hint
 {% endhint %}
 
 {% hint style="warning" %}
-anoteer hint\
-
+anoteer hint\\
 {% endhint %}
