@@ -52,9 +52,14 @@ thsi si sha2 con
 
 ## Github code
 
-{% @github-files/github-code-block url="https://github.com/greyshell/python\_programming/blob/master/crypto/hashing.py" %}
+\{% @github-files/github-code-block url="https://github.com/greyshell/python\_programming/blob/master/crypto/hashing.py" %\}
 
-{% @github-files/github-code-block url="https://raw.githubusercontent.com/greyshell/silhouette/main/install_ansiable.sh" %}
+\{% @github-files/github-code-block url="https://raw.githubusercontent.com/greyshell/silhouette/main/install\_ansiable.sh" %\}
+
+[https://github.com/greyshell/libO2/blob/main/src/sort\_int.c](https://github.com/greyshell/libO2/blob/main/src/sort\_int.c) \
+m
+
+{% @github-files/github-code-block url="https://github.com/greyshell/sqli_lab/blob/main/db/init.sql" %}
 
 ## Sample Image
 
