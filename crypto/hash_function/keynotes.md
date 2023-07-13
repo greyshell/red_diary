@@ -41,4 +41,4 @@ openssl dgst -sha256 downloaded_file
         1. In this case, an attacker controls / `free to choose` any two inputs but in `Second pre-image resistance`, one input and its hash both are fixed.
         2. That's why size of the digest matters. `Minimum` output size `256` bit / 32 byte. How does this `256` bit came from: If we randomly generates strings from a space or 2^N possibilities then there is a 50% chance / probability to find a collision after `approximately`  2^(N/2) strings.
     3. Regarding onion address, they don't need to satisfy this property so they truncate the hash output. Therefore, always verify the context to check which hash properties are required.
-    4. TODO: Where collision resistance property is used
+
