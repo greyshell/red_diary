@@ -1,4 +1,4 @@
-# Keynotes
+# Hash Function
 
 1. In general, `checksum` term is used for `non-crypto` hash functions.
 2. Feature `file download and hash match `
