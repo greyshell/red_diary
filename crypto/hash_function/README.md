@@ -1,6 +1,7 @@
 # Hash Function
 
 1. In the context of practical crypto, hash functions cannot be relied upon alone
+
 Let's take the example of a secure file download and hash verification feature:
     1. An attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
     2. To ensure the integrity and authenticity of the downloaded file, it is necessary to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
@@ -61,11 +62,12 @@ In simpler terms, if we set the digest size to a minimum of 256 bits or 32 bytes
 Performing 2^128 operations or pre-computing 2^128 strings would take an incredibly long time and is virtually impossible given the capabilities of today's standard computers. Due to this fundamental reason, all real world crypto algorithms aim for 128 bit security.
 
 When we don't require a specific hash property to satisfy, we have the option to shorten the hash output or reduce its size.
+
 Digest size: minimum requirement
-    1. Pre-image resistance: 128 bit
-    2. Second Pre-image resistance: 128 bit
-    3. Collision resistance: 256 bit
+1. Pre-image resistance: 128 bit
+2. Second Pre-image resistance: 128 bit
+3. Collision resistance: 256 bit
 
 For example: onion address => organization creates `base32` representation of hash contains the same name of the website. This type of website address is called `onion` /  `vanity ` address. 
-    1. They generate lots of public keys until one ended up hashing to a cool base32 representation.
-    2. They can also truncate the hash to achieve cool base32 representation because this hash does not need to meet collision resistance property.
+1. They generate lots of public keys until one ended up hashing to a cool base32 representation.
+2. They can also truncate the hash to achieve cool base32 representation because this hash does not need to meet collision resistance property.
