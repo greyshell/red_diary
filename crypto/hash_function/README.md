@@ -6,29 +6,23 @@
     - However, an attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
     - To ensure the integrity and authenticity of the downloaded file, we need to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
     - Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
-
 2. Checksum vs Hash functions
     - Checksum term should be used for non crypto context.
     - Checksums are primarily used for error detection in data transmission or storage. They are designed to quickly identify accidental errors or corruption in data.
     - Checksum algorithms are often simpler and faster to compute. 
-
-> The number of human-readable characters depends on the character set. ASCII consists of 128 characters however Unicode encompasses thousands of characters, making it more comprehensive than ASCII.
-
 3. Why `base64` encoding is used as a standard output of all hash functions
-- The larger the base, the less space it takes to display a binary string. 
-- Base64 is commonly used to represent binary data in a human-readable format by using a set of 64 characters (hence the name Base64).
-- Base64 is not designed to extend the character set beyond the existing human-readable characters. Instead, it aims to encode binary data into a format that is safe for transmission over systems that may interpret binary data differently.
-
+    > The number of human-readable characters depends on the character set. ASCII consists of 128 characters however Unicode encompasses thousands of characters, making it more comprehensive than ASCII.
+    + The larger the base, the less space it takes to display a binary string. 
+    + Base64 is commonly used to represent binary data in a human-readable format by using a set of 64 characters (hence the name Base64).
+    + Base64 is not designed to extend the character set beyond the existing human-readable characters. Instead, it aims to encode binary data into a format that is safe for transmission over systems that may interpret binary data differently.
 4. Can we use crypto hash functions as `Random Oracles` or random string generation
-- Although the hash functions are designed in such a way that their digests are `unpredictable` and random but still we can't replace `Random Oracles` with real hash functions.
-
+    + Although the hash functions are designed in such a way that their digests are `unpredictable` and random but still we can't replace `Random Oracles` with real hash functions.
 5. Why does dev team afraid of upgrading the hash function
-- Support backward compatibility
-
+    + Support backward compatibility
 6. Verify the digest of a downloaded file
-```bash
-openssl dgst -sha256 downloaded_file
-```
+    ```bash
+    openssl dgst -sha256 downloaded_file
+    ```
 
 ## Hash function properties
 1. `Pre-image resistance` 
@@ -56,7 +50,7 @@ The primary difference with `Second pre-image resistance` property:
 Interesting thing to note: These last two propertes are merely saying that it should be`extreamly hard` to find another input / two inputs.
 `Extreamly hard` means => it is practically impossible but not theoretically possible. Because end of the day, all hash functions are compressing the input.
 
-### Can we truncate the hash as per our choice
+## Can we truncate the hash as per our choice
 lets assume,
 1. We generate multiple digests using random inputs.
 2. The size of our digests is set to N bits, which means there are a total of 2^N possibilities.
