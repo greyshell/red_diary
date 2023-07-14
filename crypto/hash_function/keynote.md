@@ -8,24 +8,24 @@
 - To ensure the integrity and authenticity of the downloaded file, we need to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
 - Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
 
-2. Checksum
+## Checksum
 - Checksum term should be used for non crypto context.
 - Checksums are primarily used for error detection in data transmission or storage. They are designed to quickly identify accidental errors or corruption in data.
 - Checksum algorithms are often simpler and faster to compute.
 - They don't follow the hash property. In some cases, different inputs may produce the same checksum, leading to a collision.
 - Example, CRC32.
 
-3. Why `base64` encoding is used as a standard output of all hash functions
-    > The number of human-readable characters depends on the character set. ASCII consists of 128 characters however Unicode encompasses thousands of characters, making it more comprehensive than ASCII.
-    - The larger the base, the less space it takes to display a binary string. 
-    - Base64 is commonly used to represent binary data in a human-readable format by using a set of 64 characters (hence the name Base64).
-    - Base64 is not designed to extend the character set beyond the existing human-readable characters. Instead, it aims to encode binary data into a format that is safe for transmission over systems that may interpret binary data differently.
+## Why `base64` encoding is used as a standard output of all hash functions
+> The number of human-readable characters depends on the character set. ASCII consists of 128 characters however Unicode encompasses thousands of characters, making it more comprehensive than ASCII.
+- The larger the base, the less space it takes to display a binary string. 
+- Base64 is commonly used to represent binary data in a human-readable format by using a set of 64 characters (hence the name Base64).
+- Base64 is not designed to extend the character set beyond the existing human-readable characters. Instead, it aims to encode binary data into a format that is safe for transmission over systems that may interpret binary data differently.
 
-4. Can we use crypto hash functions as `Random Oracles` or random string generation
-    - Although the hash functions are designed in such a way that their digests are `unpredictable` and random but still we can't replace `Random Oracles` with real hash functions.
+## Can we use crypto hash functions as `Random Oracles` or random string generation
+- Although the hash functions are designed in such a way that their digests are `unpredictable` and random but still we can't replace `Random Oracles` with real hash functions.
 
-5. Why does dev team afraid of upgrading the hash function
-    - Support backward compatibility
+## Challenges to upgrade hash function
+1. Support backward compatibility
 
 ## Verify the digest of a downloaded file
 ```bash
