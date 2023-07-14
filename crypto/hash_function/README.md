@@ -47,7 +47,8 @@ Here, `extreamly hard` means we assume that it is practically impossible but not
 No one should be able to `produce two different input` that generates the same hash output.
 
 The primary difference with `Second pre-image resistance` property:
-    - Here an attacker is `free to choose` any two different inputs but in `Second pre-image resistance`, one input and it's hash both are fixed, knowing those two information, the attacker needs to find another input that generates the same hash.
+
+- Here an attacker is `free to choose` any two different inputs but in `Second pre-image resistance`, one input and it's hash both are fixed, knowing those two information, the attacker needs to find another input that generates the same hash.
 
 Interesting thing to note: These last two propertes are merely saying that it should be`extreamly hard` to find another input / two inputs.
 `Extreamly hard` means => it is practically impossible but not theoretically possible. Because end of the day, all hash functions are compressing the input.
