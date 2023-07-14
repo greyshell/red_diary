@@ -10,6 +10,7 @@
     - Checksum term should be used for non crypto context.
     - Checksums are primarily used for error detection in data transmission or storage. They are designed to quickly identify accidental errors or corruption in data.
     - Checksum algorithms are often simpler and faster to compute. 
+    - Example, crc32.
 3. Why `base64` encoding is used as a standard output of all hash functions
     > The number of human-readable characters depends on the character set. ASCII consists of 128 characters however Unicode encompasses thousands of characters, making it more comprehensive than ASCII.
     - The larger the base, the less space it takes to display a binary string. 
