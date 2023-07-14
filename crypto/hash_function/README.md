@@ -12,17 +12,18 @@
     - Checksum algorithms are often simpler and faster to compute. 
 3. Why `base64` encoding is used as a standard output of all hash functions
     > The number of human-readable characters depends on the character set. ASCII consists of 128 characters however Unicode encompasses thousands of characters, making it more comprehensive than ASCII.
-    + The larger the base, the less space it takes to display a binary string. 
-    + Base64 is commonly used to represent binary data in a human-readable format by using a set of 64 characters (hence the name Base64).
-    + Base64 is not designed to extend the character set beyond the existing human-readable characters. Instead, it aims to encode binary data into a format that is safe for transmission over systems that may interpret binary data differently.
+    - The larger the base, the less space it takes to display a binary string. 
+    - Base64 is commonly used to represent binary data in a human-readable format by using a set of 64 characters (hence the name Base64).
+    - Base64 is not designed to extend the character set beyond the existing human-readable characters. Instead, it aims to encode binary data into a format that is safe for transmission over systems that may interpret binary data differently.
 4. Can we use crypto hash functions as `Random Oracles` or random string generation
-    + Although the hash functions are designed in such a way that their digests are `unpredictable` and random but still we can't replace `Random Oracles` with real hash functions.
+    - Although the hash functions are designed in such a way that their digests are `unpredictable` and random but still we can't replace `Random Oracles` with real hash functions.
 5. Why does dev team afraid of upgrading the hash function
-    + Support backward compatibility
+    - Support backward compatibility
 6. Verify the digest of a downloaded file
     ```bash
     openssl dgst -sha256 downloaded_file
     ```
+7. The input of hash function can be of any size. It can even be empty. The output is always of the same length and deterministic: 
 
 ## Hash function properties
 1. `Pre-image resistance` 
