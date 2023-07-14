@@ -1,24 +1,24 @@
 # Hash Function
 
-## In the context of practical crypto, hash functions cannot be relied upon alone
+1. In the context of practical crypto, hash functions cannot be relied upon alone
 Let's take the example of a secure file download and hash verification feature:
     1. An attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
     2. To ensure the integrity and authenticity of the downloaded file, it is necessary to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
     3. Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
 
-## Checksum vs Hash functions
+2. Checksum vs Hash functions
 - In general, `checksum` term is used for `non-crypto` hash functions. It is primary used for error checking. 
 
-## Why `base64` encoding is used as a standard output of all hash functions
+3. Why `base64` encoding is used as a standard output of all hash functions
 The larger the base, the less space it takes to display a binary string.
 
-## Can we use crypto hash functions as `Random Oracles` or random string generation
+4. Can we use crypto hash functions as `Random Oracles` or random string generation
 Although the hash functions are designed in such a way that their digests are `unpredictable` and random but still we can't replace `Random Oracles` with real hash functions.
 
-## Why does dev team afraid of upgrading the hash function
+5. Why does dev team afraid of upgrading the hash function
 - Support backward compatibility
 
-## Verify the digest of a downloaded file
+6. Verify the digest of a downloaded file
 ```bash
 openssl dgst -sha256 downloaded_file
 ```
@@ -37,8 +37,8 @@ This property is merely saying that it is `extreamly hard` to find another input
 Here, `extreamly hard` means we assume that it is practically impossible but not theoretically possible. Because end of the day, all hash functions are compressing the input.
 
 > Commitment scheme: Hiding with Binding
-    1. Pre-image resistance: Hinding the input inside output / digest.
-    2. Second pre-image resistance: Binding only a single input to the digest.
+> 1. Pre-image resistance: Hinding the input inside output / digest.
+> 2. 2. Second pre-image resistance: Binding only a single input to the digest.
 
 3. `Collision resistsnce`
 No one should be able to `produce two different input` that generates the same hash output.
