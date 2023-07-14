@@ -1,6 +1,4 @@
-# Practical Crypto
-
-## TODO
+# TODO
 
  - [ ] Where the collision resistance property is used
  - [ ] Check all attacks on md5, sha1, sha2 and sha3
