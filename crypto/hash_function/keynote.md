@@ -36,7 +36,7 @@ Usage of Hashing function
     - Commitment scheme: Hiding with Binding
         + Pre-image resistance: By making a commitment we are hinding the actual input inside output / digest. For example, I am forcasting Tesla stock will rise 10% tomorrow.
         + Second pre-image resistance: Binding only a single input to the digest.
-    - 
+    - Subresource integrity check: when web pages import external JavaScript files / libraries. 
 
 ## Hash function properties
 
