@@ -50,8 +50,7 @@ The primary difference with `Second pre-image resistance` property:
 
 - Here an attacker is `free to choose` any two different inputs but in `Second pre-image resistance`, one input and it's hash both are fixed, knowing those two information, the attacker needs to find another input that generates the same hash.
 
-Interesting thing to note: These last two propertes are merely saying that it should be`extreamly hard` to find another input / two inputs.
-`Extreamly hard` means => it is practically impossible but not theoretically possible. Because end of the day, all hash functions are compressing the input.
+> These last two propertes are merely saying that it should be`extreamly hard` to find another input / two inputs. `Extreamly hard` means => it is practically impossible but not theoretically possible. Because end of the day, all hash functions are compressing the input.
 
 ## Can we truncate the hash as per our choice
 lets assume,
