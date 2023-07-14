@@ -1,11 +1,10 @@
 # Hash Function
 
-In the context of practical crypto, hash functions cannot be relied upon alone.
-
-Let's take the example of a secure file download and hash verification feature:
-    1. An attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
-    2. To ensure the integrity and authenticity of the downloaded file, it is necessary to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
-    3. Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
+1. In the context of practical crypto, hash functions cannot be relied upon alone.
+    - Let's take the example of a `secure file download and hash verification` feature:
+        1. An attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
+        2. To ensure the integrity and authenticity of the downloaded file, it is necessary to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
+        3. Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
 
 Checksum vs Hash functions
 - In general, `checksum` term is used for `non-crypto` hash functions. It is primary used for error checking. 
@@ -39,7 +38,7 @@ Here, `extreamly hard` means we assume that it is practically impossible but not
 
 > Commitment scheme: Hiding with Binding
 > 1. Pre-image resistance: Hinding the input inside output / digest.
-> 2. 2. Second pre-image resistance: Binding only a single input to the digest.
+> 2. Second pre-image resistance: Binding only a single input to the digest.
 
 3. `Collision resistsnce`
 No one should be able to `produce two different input` that generates the same hash output.
