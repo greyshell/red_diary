@@ -1,11 +1,13 @@
-# TODO
+ # Crypto
+
+ ## TODO
 
  - [ ] Where the collision resistance property is used
  - [ ] Check all attacks on md5, sha1, sha2 and sha3
  - [ ] how to use md5, sha1, sha2, sha3 in python code 
 
 
-# Crypto Study
+## Crypto Study
 
 1. https://cryptobook.nakov.com/
 2. Crypto 101 by lvh => https://www.youtube.com/watch?v=3rmCGsCYJF8
