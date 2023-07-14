@@ -1,16 +1,16 @@
 # Hash Function
 
-1. In the context of practical crypto, hash functions cannot be relied upon alone
+In the context of practical crypto, hash functions cannot be relied upon alone.
 
 Let's take the example of a secure file download and hash verification feature:
     1. An attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
     2. To ensure the integrity and authenticity of the downloaded file, it is necessary to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
     3. Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
 
-2. Checksum vs Hash functions
+Checksum vs Hash functions
 - In general, `checksum` term is used for `non-crypto` hash functions. It is primary used for error checking. 
 
-3. Why `base64` encoding is used as a standard output of all hash functions
+Why `base64` encoding is used as a standard output of all hash functions
 The larger the base, the less space it takes to display a binary string.
 
 4. Can we use crypto hash functions as `Random Oracles` or random string generation
@@ -64,10 +64,12 @@ Performing 2^128 operations or pre-computing 2^128 strings would take an incredi
 When we don't require a specific hash property to satisfy, we have the option to shorten the hash output or reduce its size.
 
 Digest size: minimum requirement
+
 1. Pre-image resistance: 128 bit
 2. Second Pre-image resistance: 128 bit
 3. Collision resistance: 256 bit
 
 For example: onion address => organization creates `base32` representation of hash contains the same name of the website. This type of website address is called `onion` /  `vanity ` address. 
+
 1. They generate lots of public keys until one ended up hashing to a cool base32 representation.
 2. They can also truncate the hash to achieve cool base32 representation because this hash does not need to meet collision resistance property.
