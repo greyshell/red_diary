@@ -1,6 +1,5 @@
 # Crypto Study
 
-## Resources
 1. https://cryptobook.nakov.com/
 2. Crypto 101 by lvh => https://www.youtube.com/watch?v=3rmCGsCYJF8
 3. https://docs.python.org/3/library/hashlib.html
