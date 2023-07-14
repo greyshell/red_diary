@@ -1,17 +1,19 @@
 # Hash Function
 
-1. In the context of practical crypto, hash functions cannot be relied upon alone.
-    - Let's take the example of a `secure file download and hash verification` feature
-    - The intended objective: no attacker should be able to fool you by giving you a different file that means second pre-image resistance property must be satisfied. The digest is closely tied to the file you’re downloading.
-    - However, an attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
-    - To ensure the integrity and authenticity of the downloaded file, we need to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
-    - Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
+## Does hash function alone provide true integrity
+- context: secure file download feature
+- In the context of practical crypto, hash functions cannot be relied upon alone.
+- The intended objective of that feature: no attacker should be able to fool you by giving you a different file that means second pre-image resistance property must be satisfied. The digest is closely tied to the file you’re downloading.
+- However, an attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
+- To ensure the integrity and authenticity of the downloaded file, we need to rely on `trusted mechanisms` such as Transport Layer Security (TLS) and hosting sites that cannot be compromised.
+- Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
 
-2. Checksum vs Hash functions
-    - Checksum term should be used for non crypto context.
-    - Checksums are primarily used for error detection in data transmission or storage. They are designed to quickly identify accidental errors or corruption in data.
-    - Checksum algorithms are often simpler and faster to compute. 
-    - Example, crc32.
+2. Checksum
+- Checksum term should be used for non crypto context.
+- Checksums are primarily used for error detection in data transmission or storage. They are designed to quickly identify accidental errors or corruption in data.
+- Checksum algorithms are often simpler and faster to compute.
+- They don't follow the hash property. In some cases, different inputs may produce the same checksum, leading to a collision.
+- Example, CRC32.
 
 3. Why `base64` encoding is used as a standard output of all hash functions
     > The number of human-readable characters depends on the character set. ASCII consists of 128 characters however Unicode encompasses thousands of characters, making it more comprehensive than ASCII.
@@ -25,38 +27,36 @@
 5. Why does dev team afraid of upgrading the hash function
     - Support backward compatibility
 
-6. Verify the digest of a downloaded file
-    ```bash
-    openssl dgst -sha256 downloaded_file
-    ```
+## Verify the digest of a downloaded file
+```bash
+openssl dgst -sha256 downloaded_file
+```
 
-7. The input of hash function can be of any size. It can even be empty. The output is always of the same length and deterministic
+## Size of hash / digest
+- The input of hash function can be of any size. It can even be empty. 
+- The output is always of the same length and deterministic
 
-Usage of Hashing function
-    - Commitment scheme: Hiding with Binding
-        + Pre-image resistance: By making a commitment we are hinding the actual input inside output / digest. For example, I am forcasting Tesla stock will rise 10% tomorrow.
-        + Second pre-image resistance: Binding only a single input to the digest.
-    - Subresource integrity check: when web pages import external JavaScript files / libraries. 
+## Usage of Hashing function
+1. Commitment scheme: Hiding with Binding
+    - Pre-image resistance: By making a commitment we are hinding the actual input inside output / digest. For example, I am forcasting Stock X will reach $50 next month.
+    - Second pre-image resistance: Binding only a single input to the digest.
+2. Subresource integrity check: when web pages import external JavaScript files / libraries. 
 
 ## Hash function properties
 
-1. `Pre-image resistance` 
+### 1. `Pre-image resistance`
 No one should be able to `reverse` the hash function in order to `recover` the `input` from the output.
 
 - This is also called `one-way` property.
 - It is always possible to find the plan text from a digest if that pain text is small (brute force the space) or predictable (use dictionary) to fill up a rainbow table and reverse lookup. However, here we are assuming, if the digest is generated from a large / un-predictable(i.e not from dictionary words) text then just by knowing the hash, we can't `recover` the plain text.
   
-2. `Second pre-image resistance`
+### 2. `Second pre-image resistance`
 Knowing the `plain text` and the `hash` both, we can't find another input that produces the `same` hash.
 
 This property is merely saying that it is `extreamly hard` to find another input.
 Here, `extreamly hard` means we assume that it is practically impossible but not theoretically possible. Because end of the day, all hash functions are compressing the input.
 
-> Commitment scheme: Hiding with Binding
-> 1. Pre-image resistance: Hinding the input inside output / digest.
-> 2. Second pre-image resistance: Binding only a single input to the digest.
-
-3. `Collision resistsnce`
+### 3. `Collision resistsnce`
 No one should be able to `produce two different input` that generates the same hash output.
 
 The primary difference with `Second pre-image resistance` property:
