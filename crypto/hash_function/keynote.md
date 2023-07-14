@@ -32,7 +32,14 @@
 
 7. The input of hash function can be of any size. It can even be empty. The output is always of the same length and deterministic
 
+Usage of Hashing function
+    - Commitment scheme: Hiding with Binding
+        + Pre-image resistance: By making a commitment we are hinding the actual input inside output / digest. For example, I am forcasting Tesla stock will rise 10% tomorrow.
+        + Second pre-image resistance: Binding only a single input to the digest.
+    - 
+
 ## Hash function properties
+
 1. `Pre-image resistance` 
 No one should be able to `reverse` the hash function in order to `recover` the `input` from the output.
 
