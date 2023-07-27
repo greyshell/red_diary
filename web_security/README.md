@@ -9,7 +9,7 @@
 6. [Browser Security](https://github.com/cure53/browser-sec-whitepaper)
 7. API Security in Action
 
-## Certs / Other Resources:
+## Certs / Other Resources
 1. INE
   - WAPT
   - WAPTx
@@ -44,7 +44,7 @@
 11. Introduction XSS-Leak Wiki
   - https://xsleaks.dev/  
 
-## Tools:
+## Tools
 1. Mastering Burp Suite Pro by Agarri: Syllabus - Mastering Burp Suite Pro
 2. [Burpsuite Extension Development](https://www.educative.io/courses/burp-suite-extension-development)
 
