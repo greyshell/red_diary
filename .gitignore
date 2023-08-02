@@ -1,11 +1,24 @@
 .DS_Store
 # locked folders
-code_review/
-container_security/
 interview/
 system_setup/
-# web_security/
+
+crypto/
+web_security/
+code_review/
+system_design/
+
+windows_exp_dev/
+linux_exploit_dev/
+
 pen_test/
 
+# infra security
+container_security/
+ks8_security/
+aws_security/
+
+sec_devops/
+
 # unlocked folders
-# crypto
+
