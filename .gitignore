@@ -1,15 +1,16 @@
 .DS_Store
+guff.md
 # locked folders
 interview/
 system_setup/
 
 crypto/
-web_security/
+# web_security/
 code_review/
 system_design/
 
-windows_exp_dev/
-linux_exploit_dev/
+# windows_exp_dev/
+# linux_exploit_dev/
 
 pen_test/
 

@@ -59,4 +59,4 @@ public class BasicSerialize {
 ```
 
 ## Deserialization
-Deserialization is the reverse process where the byte stream is used to recreate the actual java object in memory.
+Deserialization is the reverse process where the byte stream is used to re-create the actual java object in memory.

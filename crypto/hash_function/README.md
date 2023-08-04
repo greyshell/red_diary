@@ -1,21 +1,20 @@
 # Hash Function
 
 ## Hash function and Integrity
-- Context: secure file download feature
-- In the context of practical crypto, hash functions cannot be relied upon alone.
-- The intended objective of that feature: 
-  - no attacker should be able to fool you by giving you a different file that means second pre-image resistance property must be satisfied. 
-  - The digest is closely tied to the file you’re downloading.
+1. In the context of practical crypto, hash functions cannot be relied upon alone.
+2. The intended objective of file download and hash checking feature: 
+  1. The digest is closely tied to the file you’re downloading.
+  2. no attacker should be able to fool you by giving you a different file that means second pre-image resistance property must be satisfied.
 
-- However, an attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
-- To ensure the integrity and authenticity of the downloaded file, we need to rely on `trusted mechanisms` such as 
-  - Transport Layer Security (TLS) and 
-  - hosting sites that cannot be compromised.
+3. However, an attacker could perform a Man-in-the-Middle (MITM) attack or compromise the website, allowing them to replace both the file and its associated hash.
+4. To ensure the integrity and authenticity of the downloaded file, we need to rely on `trusted mechanisms` such as 
+  1. Transport Layer Security (TLS) and 
+  2. hosting sites that cannot be compromised.
 
-- Message Authentication Code (MAC) addresses this issue by incorporating secrets, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
+5. Message Authentication Code (MAC) addresses this issue by incorporating `secrets`, providing a solution that ensures both integrity and authenticity. The same we can achieve by signing the hash with private key(digital signature).
 
 ## Checksum
-- Checksum term should be used for non crypto context.
+- Checksum term should only be used for non crypto context.
 - Checksums are primarily used for error detection in data transmission or storage. They are designed to quickly identify accidental errors or corruption in data.
 - Checksum algorithms are often simpler and faster to compute.
 - They don't follow the hash property. In some cases, different inputs may produce the same checksum, leading to a collision.

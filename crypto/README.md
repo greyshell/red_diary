@@ -13,10 +13,15 @@
 8. Book: Bulletproof SSL
 9. Book: Serious Cryptography
 10. CTF - https://cryptopals.com/
-11. WAPTX -> Crypto module
+11. Crypto module
+    1. WAPTX
+    2. notsosecure adv web pen testing
+    3. GXPN
+    4. SANS adv web pen testing
 
 
-## Crypto Questions => Module: Unsorted
+
+## [Unsorted] Crypto Questions
 1. Padding Oracle Attack
 2. Hash length extension attack
 3. How to store password securely
@@ -27,4 +32,3 @@
 8. In practical, where we use symmetric and asymmetric encryption and comparison 
 9. Why randomness is important, why probability plays a key role
 10. HPKP and HSTS header drawback, what is the alternate header
-11. 
