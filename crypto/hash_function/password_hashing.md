@@ -36,16 +36,18 @@ The attacker knows the password directly if he compromises the database.
 5. Use salt with
 
    1.  `slow computation`, `memory heavy` hash function like argon2, scrypt.
-   2. XOF and `personalization` string supported algo (domain saperation)
-
+   2.  Support for XOF / variable length digest length
+   3.  Bonus: support for `personalization` string (domain saperation)
    
-
+   
+   
    
 
 >  Q. Can we use `username` or UID as salt
 >
-> 1. No. Because it does not generated from `un-predictable` source. Should be generated from csrng(i.e os.urandom()) function.
-> 2. Could be too short. Does not meet minimum 32 byte requirement.
+>  1. No. Because it does not generated from `un-predictable` source. 
+>  2. Salt should be generated from csrng(i.e os.urandom()) function.
+>  3. Could be too short. Does not meet minimum 32 byte requirement.
 
 
 
@@ -99,7 +101,9 @@ Following all key derivation functions are resistant to rainbow table attacks
 
    1. It is memory-intensive, designed to prevent **GPU**, **ASIC** and **FPGA** based attacks (highly efficient password cracking hardware)
 
-   2. Function Arguments are 
+   2. XOF supported
+
+   3. Function Arguments are 
 
       ```
       hash_key = Scrypt(password, salt, N, r, p, derived-key-len)
