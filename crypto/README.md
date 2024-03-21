@@ -17,11 +17,15 @@
     1. WAPTX
     2. notsosecure adv web pen testing
     3. GXPN
-    4. SANS adv web pen testing
+    4. CEHv8
+    5. SANS adv web pen testing
+12. https://nptelvideos.com/course.php?id=398
+13. 
+14. 
 
 
 
-## [Unsorted] Crypto Questions
+## [Unsorted] Popular Crypto Questions
 1. Padding Oracle Attack
 2. Hash length extension attack
 3. How to store password securely
