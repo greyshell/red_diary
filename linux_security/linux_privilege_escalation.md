@@ -2,11 +2,12 @@
 
 `/etc/passwd` => this file does not contain a password. If the user has a password then it has * that indicates the salted_hashed password is stored in `/etc/shadow` file.
 
-### Structure of an entry in `/etc/shadow` file
 
 ```
+Structure of an entry in `/etc/shadow` file
+
 kali:$y$j9T$hW9K52EOJBFsViQ7HRz370$//6l5BWkvHl3PTkK6qgZhGFTLOFKR/zVCEwjlZIwAq0:19778:0:99999:7:::
-```
+
 0. $ is the marker
 1. kali => username
 2. y => indicates the hashing algorithm - `yescrypt`.
@@ -21,5 +22,7 @@ kali:$y$j9T$hW9K52EOJBFsViQ7HRz370$//6l5BWkvHl3PTkK6qgZhGFTLOFKR/zVCEwjlZIwAq0:1
 10. Password Inactivity Period: None specified
 11. Account Expiration Date: None specified
 12. Reserved Field: Not utilized
+```
+
 
 
