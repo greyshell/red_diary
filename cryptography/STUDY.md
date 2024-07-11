@@ -1,4 +1,4 @@
- # Crypto Study
+ # Cryptography Study
 
 1. https://cryptobook.nakov.com/
 2. Crypto 101 by lvh => https://www.youtube.com/watch?v=3rmCGsCYJF8
