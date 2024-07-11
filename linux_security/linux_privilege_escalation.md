@@ -24,5 +24,12 @@ kali:$y$j9T$hW9K52EOJBFsViQ7HRz370$//6l5BWkvHl3PTkK6qgZhGFTLOFKR/zVCEwjlZIwAq0:1
 12. Reserved Field: Not utilized
 ```
 
+1. misconfigured file permissons
+    1. world readable `/etc/shadow` file: The unshadow utility is used to combine /etc/passwd and /etc/shadow files into a single format that John the Ripper can understand. then crack using `john --show unshadowed.txt`.
+    2. world writable `/etc/shadow` file: overwrite the encrypted password with new password.
+    3. `/etc/passwd` is world writable: `/etc/passwd` takes precedence over `/etc/shadow` – Encrypted password can be added directly in `/etc/passwd`
 
 
+## Reference
+
+1. pentesteracademy linux privilege escalation bootcamp
