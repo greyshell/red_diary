@@ -1,7 +1,4 @@
- # Crypto
-
-
-## Crypto Study
+ # Crypto Study
 
 1. https://cryptobook.nakov.com/
 2. Crypto 101 by lvh => https://www.youtube.com/watch?v=3rmCGsCYJF8
@@ -20,9 +17,6 @@
     4. CEHv8
     5. SANS adv web pen testing
 12. https://nptelvideos.com/course.php?id=398
-13. 
-14. 
-
 
 
 ## [Unsorted] Popular Crypto Questions
