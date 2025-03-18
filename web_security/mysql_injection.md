@@ -4,8 +4,6 @@ SQL Injection (SQLi) happens when `unsanitized` user input `breaks out` of the `
 
 
 
-{% @github-files/github-code-block %}
-
 
 
 ## Impact / Risk
