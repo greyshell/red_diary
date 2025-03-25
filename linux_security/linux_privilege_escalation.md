@@ -1,7 +1,10 @@
 # Linux Privilege Escalation
 
-`/etc/passwd` => this file does not contain a password. If the user has a password then it has * that indicates the salted_hashed password is stored in `/etc/shadow` file.
+{% @lucid/lucid-component url="https://lucid.app/lucidspark/31de42af-f972-4ec6-bdc9-aba55594e263/edit?invitationId=inv_928b39ac-5b68-42ab-b36d-7a4f73e283b6&viewport_loc=-1525,-867,3413,1627,0_0" %}
 
+
+
+`/etc/passwd` => this file does not contain a password. If the user has a password then it has \* that indicates the salted\_hashed password is stored in `/etc/shadow` file.
 
 ```
 Structure of an entry in `/etc/shadow` file
@@ -25,10 +28,9 @@ kali:$y$j9T$hW9K52EOJBFsViQ7HRz370$//6l5BWkvHl3PTkK6qgZhGFTLOFKR/zVCEwjlZIwAq0:1
 ```
 
 1. misconfigured file permissons
-    1. world readable `/etc/shadow` file: The unshadow utility is used to combine /etc/passwd and /etc/shadow files into a single format that John the Ripper can understand. then crack using `john --show unshadowed.txt`.
-    2. world writable `/etc/shadow` file: overwrite the encrypted password with new password.
-    3. `/etc/passwd` is world writable: `/etc/passwd` takes precedence over `/etc/shadow` – Encrypted password can be added directly in `/etc/passwd`
-
+   1. world readable `/etc/shadow` file: The unshadow utility is used to combine /etc/passwd and /etc/shadow files into a single format that John the Ripper can understand. then crack using `john --show unshadowed.txt`.
+   2. world writable `/etc/shadow` file: overwrite the encrypted password with new password.
+   3. `/etc/passwd` is world writable: `/etc/passwd` takes precedence over `/etc/shadow` – Encrypted password can be added directly in `/etc/passwd`
 
 ## Reference
 
