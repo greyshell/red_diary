@@ -10,7 +10,7 @@
   * [Message Authentication Code](cryptography/mac.md)
   * [Password Hashing](cryptography/password_hashing.md)
 * [linux\_security](linux_security/README.md)
-  * [Linux Privilege Escalation](linux_security/linux_privilege_escalation.md)
+  * [Test Page](linux_security/linux_privilege_escalation.md)
 * [web\_security](web_security/README.md)
   * [MySQL Injection](web_security/mysql_injection.md)
   * [Server side request forgery](web_security/ssrf.md)

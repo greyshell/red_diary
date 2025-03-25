@@ -2,7 +2,7 @@
 
 ## The Bug
 
-This type of attack occurs when the application `prepends` a `secret` / `key` to the data and creates the digest(to support authenticity) by using `markle-damgard` construction. 
+This type of attack occurs when the application `prepends` a `secret` / `key` to the data and creates the digest(to support authenticity) by using `markle-damgard` construction.
 
 ## Impact
 
@@ -10,30 +10,29 @@ Without knowing the backend secret, the attacker can calculate a `valid` hash th
 
 ## How to exploit
 
->  merkle-damguard construction: Padding is depends on his the fact that hashes are calculated in blocks and the hash of one block is the state for next block.
-
+> merkle-damguard construction: Padding is depends on his the fact that hashes are calculated in blocks and the hash of one block is the state for next block.
 
 The attacker only needs to guess the `length of the secret` to determine how many bytes of padding required.
 
-- With limited information he can also brueforce the length to min - max space.
+* With limited information he can also brueforce the length to min - max space.
 
 ## Black box perspective
 
-- Find a response that provides the hash.
-  - In the request, what parameters are used by the backend to generate the hash
-- Check which order those parameters are used.
-- Guess the algorithm used - iterate through md5, sha1, sha256
-- If you can't generate the same hash after the combination of those parameters then may be secret / is used.
-- Check if the hash returns direct filename or hash
-  - try to access /etc/passwd
+* Find a response that provides the hash.
+  * In the request, what parameters are used by the backend to generate the hash
+* Check which order those parameters are used.
+* Guess the algorithm used - iterate through md5, sha1, sha256
+* If you can't generate the same hash after the combination of those parameters then may be secret / is used.
+* Check if the hash returns direct filename or hash
+  * try to access /etc/passwd
 
 ## Practical Scenario
 
-![image-20231103042923158](./.hash_length_extension_attack.assets/image-20231103042923158.png)
+![image-20231103042923158](../crypto/.hash_length_extension_attack.assets/image-20231103042923158.png)
 
-![image-20231103043344391](./.hash_length_extension_attack.assets/image-20231103043344391.png)
+![image-20231103043344391](../crypto/.hash_length_extension_attack.assets/image-20231103043344391.png)
 
-![image-20231103044427955](./.hash_length_extension_attack.assets/image-20231103044427955.png)
+![image-20231103044427955](../crypto/.hash_length_extension_attack.assets/image-20231103044427955.png)
 
 ## Exploitation
 
@@ -52,19 +51,14 @@ transactionid=95866a4654654654dhruv.nss@mailninator.com248&email=&amount=
 
 1. Find out the order of those parameters used in the function.
    1. If n parms are used then nC1 combinations.
-2. Verify if the md5(transactionid || email || amount) matches with the existing hash. 
+2. Verify if the md5(transactionid || email || amount) matches with the existing hash.
    1. If not then there could a possibility that a secret is pre-pended and used .
 3. Identify the block size - for example md5 processes data in 512-bit (64-byte) blocks.
 
+> 1) MD5 pad signature: 1 followed by the zeros
+> 2) last byte is reserved for the length of the actual message
 
-
-> 1. MD5 pad signature: 1 followed by the zeros
->
-> 2. last byte is reserved for the length of the actual message
-
-
-
-Tool used: https://github.com/iagox86/hash_extender
+Tool used: https://github.com/iagox86/hash\_extender
 
 Objective: Try to purchase with amount 10 instead of 248.
 
@@ -99,33 +93,28 @@ data = (transaction_id || email || amount) =>  ("958661000887623dhruv.nss@mailni
 
 Clean up the payload - removing transaction id and amount=10
 
-![image-20231103035223287](./.hash_length_extension_attack.assets/image-20231103035223287.png)
+![image-20231103035223287](../crypto/.hash_length_extension_attack.assets/image-20231103035223287.png)
 
-
-
-![image-20231103034521974](./.hash_length_extension_attack.assets/image-20231103034521974.png)
+![image-20231103034521974](../crypto/.hash_length_extension_attack.assets/image-20231103034521974.png)
 
 The 4th payload went through.
 
 payload 0 => actual request, payload 1 => secret length 8, `payload 4` => secret length 11
 
-![image-20231103035619540](./.hash_length_extension_attack.assets/image-20231103035619540.png)
+![image-20231103035619540](../crypto/.hash_length_extension_attack.assets/image-20231103035619540.png)
 
 4th payload -> request in browser and get the credit card with order id page for final stage of purchase.
 
-![image-20231103043801028](./.hash_length_extension_attack.assets/image-20231103043801028.png)
+![image-20231103043801028](../crypto/.hash_length_extension_attack.assets/image-20231103043801028.png)
 
 Another example:
 
-![image-20231103104425946](./.hash_length_extension_attack.assets/image-20231103104425946.png)
+![image-20231103104425946](../crypto/.hash_length_extension_attack.assets/image-20231103104425946.png)
 
 ## Mitigation
 
 1. Append the secret at the end of the message where message is a seriaized object
    1. have proper field demarkation char with the length of each field
-   1. i.e h(transaction_id || 5 || email || 10 || amount || 3 || key || 8)
+   2. i.e h(transaction\_id || 5 || email || 10 || amount || 3 || key || 8)
 2. Use HMAC, KMAC if you prefer SHA3/ cSHAKE (both uses sponge construction)
 3. Use tuple hash function.
-
-
-
