@@ -22,13 +22,13 @@ Demo of table&#x20;
 <table><thead><tr><th>Threat</th><th width="153.26171875">Severity</th><th width="343.3984375">Recommendation</th></tr></thead><tbody><tr><td>sql injection</td><td>high</td><td><ol><li>parameterized query</li><li>whitelist input validation</li></ol></td></tr></tbody></table>
 
 {% tabs %}
-{% tab title="First Tab" %}
-\
+{% tab title="SQLi" %}
+SQL Injection \
 
 {% endtab %}
 
-{% tab title="Second Tab" %}
-
+{% tab title="XSS" %}
+Cross Site Scripting
 {% endtab %}
 {% endtabs %}
 
