@@ -1,5 +1,0 @@
-# MySQL Injection
-
----
-
-Tbd
