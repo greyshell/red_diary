@@ -1,26 +1,5 @@
 .DS_Store
 guff.md
 # locked folders
-interview/
-system_setup/
-
-# cryptography/
-# web_security/
-# linux_security
-code_review/
-system_design/
-
-# windows_exp_dev/
-# linux_exploit_dev/
-
-pen_test/
-
-# infra security
-container_security/
-ks8_security/
-aws_security/
-
-sec_devops/
-
-# unlocked folders
-
+# unlocked folder
+.claude/
